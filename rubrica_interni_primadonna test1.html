@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rubrica Interni HQ – Primadonna Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --nero: #000000;
+      --oro: #d4c2a2;
+      --grigio-chiaro: #f4f4f4;
+      --bianco: #ffffff;
+    }
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--grigio-chiaro);
+      color: var(--nero);
+    }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px;
+    }
+    .card {
+      background: var(--bianco);
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      padding: 14px 16px 18px;
+      margin-bottom: 16px;
+    }
+    .header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      text-align: center;
+    }
+    <img src="logo_primadonna.jpg" 
+     alt="Logo Primadonna" 
+     style="width:260px; height:auto; margin-bottom:14px; display:block; margin-left:auto; margin-right:auto;">
+
+{
+      width: 210px;
+      height: 60px;
+      border-radius: 999px;
+      border: 1px solid var(--oro);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #555;
+      max-width: 600px;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+      justify-content: center;
+    }
+    .filters label {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .select,
+    .input {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #ccc;
+      font-size: 13px;
+      min-width: 180px;
+    }
+    .select:focus,
+    .input:focus {
+      outline: none;
+      border-color: var(--oro);
+      box-shadow: 0 0 0 1px var(--oro);
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border-radius: 999px;
+      background: #fff6e9;
+      padding: 2px 10px;
+      font-size: 11px;
+      border: 1px solid var(--oro);
+      margin-top: 6px;
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--oro);
+    }
+    .table-wrapper {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 13px;
+      background: var(--bianco);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    thead {
+      background: var(--nero);
+      color: var(--bianco);
+    }
+    th,
+    td {
+      padding: 8px 10px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    th {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    tbody tr:nth-child(even) {
+      background: #fafafa;
+    }
+    tbody tr:hover {
+      background: #fff6e9;
+    }
+    .col-reparto {
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .col-nome {
+      font-weight: 600;
+    }
+    .muted {
+      color: #777;
+      font-size: 12px;
+    }
+    .footer-note {
+      font-size: 11px;
+      color: #777;
+      margin-top: 8px;
+      text-align: center;
+    }
+    .hint {
+      font-size: 12px;
+      color: #555;
+      margin-top: 8px;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      .title {
+        font-size: 18px;
+      }
+      th,
+      td {
+        padding: 6px 8px;
+      }
+      .card {
+        padding: 10px 10px 14px;
+      }
+    }
+  </style>
+</head>
+
+        </div>
+
+        <div class="title">Rubrica Interni HQ</div>
+        <div class="subtitle">
+          Seleziona il reparto e trova il contatto interno da chiamare.
+      
+        </div>
+
+        <div class="filters">
+          <div>
+            <label for="filtroReparto">Reparto</label><br />
+            <select id="filtroReparto" class="select">
+              <option value="">Tutti i reparti</option>
+            </select>
+          </div>
+          <div>
+            <label for="filtroNome">Cerca per nome</label><br />
+            <input
+              id="filtroNome"
+              class="input"
+              type="text"
+              placeholder="Digita nome o cognome…"
+            />
+          </div>
+        </div>
+
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          <span>Per corrieri: selezionare <strong>Logistica / Magazzino</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-wrapper">
+        <table id="rubricaTable">
+          <thead>
+            <tr>
+              <th>Reparto</th>
+              <th>Nome</th>
+              <th>Interno</th>
+              <th>Telefono fisso</th>
+              <th>Cellulare</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody id="rubricaBody">
+          </tbody>
+        </table>
+      </div>
+      <div class="hint">
+        Usa il filtro reparto o la ricerca per trovare velocemente la persona che ti serve.
+      </div>
+      <div class="footer-note">
+        Rubrica interna – uso operativo. Contatti aggiornati dall’ufficio competente.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const contatti = [
+  { reparto: "ACQUISTI", nome: "Laura Gaudimundo", interno: "6026", fisso: "808499626", cellulare: "", email: "l.gaudimundo@primadonna.it" },
+  { reparto: "ACQUISTI", nome: "Michele Lauriola", interno: "6063", fisso: "802046963", cellulare: "", email: "m.lauriola@primadonna.it" },
+  { reparto: "ACQUISTI", nome: "Rosanna Carlucci", interno: "6063", fisso: "802046957", cellulare: "", email: "r.carlucci@primadonna.it" },
+  { reparto: "CONTABILITA", nome: "CONTABILITA", interno: "", fisso: "", cellulare: "", email: "fatturefornitori@primadonna.it" },
+  { reparto: "CONTABILITA", nome: "Antonella Carbonara", interno: "6056", fisso: "808499656", cellulare: "", email: "a.carbonara@primadonna.it" },
+  { reparto: "CONTABILITA", nome: "Camilla Daddario", interno: "6017", fisso: "808499628", cellulare: "", email: "c.daddario@primadonna.it" },
+  { reparto: "CONTABILITA", nome: "Claudia Pisicchio", interno: "6068", fisso: "808499615", cellulare: "", email: "c.pisicchio@primadonna.it" },
+  { reparto: "CONTABILITA", nome: "Dalila Petrosino", interno: "", fisso: "", cellulare: "", email: "d.petrosino@primadonna.it" },
+  { reparto: "CONTABILITA", nome: "Davide Loperfido", interno: "6037", fisso: "808499637", cellulare: "", email: "d.loperfido@primadonna.it" },
+  { reparto: "CONTABILITA", nome: "Francesca De Fano", interno: "", fisso: "", cellulare: "3472719972", email: "f.fano@primadonna.it" },
+  { reparto: "CONTABILITA", nome: "Isabella Pagano", interno: "6470", fisso: "802059070", cellulare: "", email: "i.pagano@primadonna.it" },
+  { reparto: "CONTABILITA", nome: "Mariella Ladisa", interno: "6024", fisso: "808499625", cellulare: "", email: "m.ladisa@primadonna.it" },
+  { reparto: "CONTABILITA", nome: "Pantaleo Spaccavento", interno: "6054", fisso: "808499631", cellulare: "", email: "p.spaccavento@primadonna.it" },
+  { reparto: "CUSTOME CARE E-COMMERCE", nome: "CUSTOME CARE E-COMMERCE", interno: "", fisso: "", cellulare: "3385718486", email: "customercare@primadonna.it" },
+  { reparto: "CUSTOME CARE E-COMMERCE", nome: "Marco Mannarini", interno: "", fisso: "", cellulare: "3355226817", email: "m.mannarini@primadonna.it" },
+  { reparto: "CUSTOME CARE E-COMMERCE", nome: "Stefania Cosola", interno: "", fisso: "", cellulare: "3666809469", email: "s.cosola@primadonna.it" },
+  { reparto: "FINANZA", nome: "Marzia Ladisa", interno: "6025", fisso: "808499625", cellulare: "", email: "m.ladisa@primadonna.it" },
+  { reparto: "FINANZA", nome: "Maurizio Lopez", interno: "6034", fisso: "808499634", cellulare: "", email: "m.lopez@primadonna.it" },
+  { reparto: "LEGALE", nome: "Valeria Carella", interno: "", fisso: "", cellulare: "3476695763", email: "v.carella@primadonna.it" },
+  { reparto: "LOGISTICA", nome: "Domenico Rinaldi", interno: "", fisso: "", cellulare: "", email: "d.rinaldi@primadonna.it" },
+  { reparto: "LOGISTICA", nome: "Eleonora Camilloni", interno: "6058", fisso: "808499658", cellulare: "", email: "e.camilloni@primadonna.it" },
+  { reparto: "LOGISTICA", nome: "Eva Onesti", interno: "6022", fisso: "808499622", cellulare: "", email: "e.onesti@primadonna.it" },
+  { reparto: "LOGISTICA", nome: "Giuseppe Rotunno", interno: "", fisso: "", cellulare: "", email: "g.rotunno@primadonna.it" },
+  { reparto: "MARKETING", nome: "Antonella Sollecito", interno: "", fisso: "", cellulare: "3316355204", email: "a.sollecito@primadonna.it" },
+  { reparto: "MARKETING", nome: "Gaia Ceglie", interno: "", fisso: "", cellulare: "", email: "g.ceglie@primadonna.it" },
+  { reparto: "MARKETING", nome: "Maria Tedone", interno: "", fisso: "", cellulare: "3386484104", email: "m.tedone@primadonna.it" },
+  { reparto: "ECONOMATO", nome: "Ketty Masciale", interno: "6048", fisso: "", cellulare: "", email: "c.masciale@primadonna.it" },
+  { reparto: "ECONOMATO", nome: "Nicolò Montebello", interno: "6472", fisso: "", cellulare: "", email: "n.montebello@primadonna.it" },
+  { reparto: "IT DEPARTMENT", nome: "Mario Padolecchia", interno: "", fisso: "", cellulare: "3386065401", email: "m.padolecchia@primadonna.it" },
+  { reparto: "PERSONALE", nome: "Emanuella Montagna", interno: "", fisso: "", cellulare: "3421237791", email: "e.montagna@primadonna.it" },
+  { reparto: "PERSONALE", nome: "Giorgia Remini", interno: "", fisso: "802228008", cellulare: "", email: "g.remini@primadonna.it" },
+  { reparto: "PERSONALE", nome: "Micaela Marascia", interno: "", fisso: "", cellulare: "3386858532", email: "m.marascia@primadonna.it" },
+  { reparto: "PERSONALE", nome: "Alberto Barberio", interno: "6061", fisso: "808499661", cellulare: "", email: "a.barberio@primadonna.it" },
+  { reparto: "PERSONALE", nome: "Alessandro Colasanto", interno: "6038", fisso: "808499638", cellulare: "", email: "a.colasanto@primadonna.it" },
+  { reparto: "PERSONALE", nome: "Michele Masciale", interno: "6030", fisso: "", cellulare: "3427684806", email: "m.masciale@primadonna.it" },
+  { reparto: "PIAN E CONTROLLO", nome: "Daniela Stragapede", interno: "", fisso: "", cellulare: "", email: "d.stragapede@primadonna.it" },
+  { reparto: "REPORT", nome: "Giorgia Campioni", interno: "6014", fisso: "", cellulare: "", email: "g.campioni@primadonna.it" },
+  { reparto: "REPORT", nome: "Gaia Campanelli", interno: "6050", fisso: "808499650", cellulare: "", email: "g.campanelli@primadonna.it" },
+  { reparto: "RETAIL", nome: "Rosa Maria Dalessandro", interno: "", fisso: "", cellulare: "3666971521", email: "r.dalessandro@primadonna.it" },
+  { reparto: "RETAIL", nome: "Sergio Di Corato", interno: "", fisso: "", cellulare: "3489148656", email: "s.corato@primadonna.it" },
+  { reparto: "RETAIL", nome: "Vito Simmi", interno: "", fisso: "", cellulare: "", email: "v.simmi@primadonna.it" },
+  { reparto: "SVILUPPO", nome: "Giorgio Fuser", interno: "", fisso: "", cellulare: "3356806986", email: "g.fuser@primadonna.it" },
+  { reparto: "SVILUPPO", nome: "Francesca La Colla", interno: "6051", fisso: "808496051", cellulare: "", email: "f.colla@primadonna.it" },
+  { reparto: "UFFICIO TECNICO", nome: "Antonio Cipolla", interno: "", fisso: "", cellulare: "3356379068", email: "a.cipolla@primadonna.it" },
+  { reparto: "UFFICIO TECNICO", nome: "Davide Arezzo", interno: "", fisso: "", cellulare: "3499347263", email: "d.arezzo@primadonna.it" }
+    ];
+
+    const corpoTabella = document.getElementById("rubricaBody");
+    const filtroReparto = document.getElementById("filtroReparto");
+    const filtroNome = document.getElementById("filtroNome");
+
+    function popolaReparti() {
+      const repartiUnici = [...new Set(contatti.map(c => c.reparto))].sort();
+      repartiUnici.forEach(rep => {
+        const opt = document.createElement("option");
+        opt.value = rep;
+        opt.textContent = rep;
+        filtroReparto.appendChild(opt);
+      });
+    }
+
+    function aggiornaTabella() {
+      const repSel = filtroReparto.value.toLowerCase();
+      const nomeSel = filtroNome.value.toLowerCase().trim();
+
+      corpoTabella.innerHTML = "";
+
+      const filtrati = contatti.filter(c => {
+        const matchReparto = repSel === "" || c.reparto.toLowerCase() === repSel;
+        const matchNome =
+          nomeSel === "" ||
+          c.nome.toLowerCase().includes(nomeSel) ||
+          c.reparto.toLowerCase().includes(nomeSel);
+        return matchReparto && matchNome;
+      });
+
+      filtrati.forEach(c => {
+        const tr = document.createElement("tr");
+
+        const tdRep = document.createElement("td");
+        tdRep.textContent = c.reparto;
+        tdRep.className = "col-reparto";
+
+        const tdNome = document.createElement("td");
+        tdNome.textContent = c.nome;
+        tdNome.className = "col-nome";
+
+        const tdInterno = document.createElement("td");
+        tdInterno.textContent = c.interno || "-";
+
+        const tdFisso = document.createElement("td");
+        tdFisso.textContent = c.fisso || "-";
+
+        const tdCell = document.createElement("td");
+        tdCell.textContent = c.cellulare || "-";
+
+        const tdEmail = document.createElement("td");
+        tdEmail.innerHTML = c.email
+          ? '<a href="mailto:' + c.email + '">' + c.email + "</a>"
+          : '<span class="muted">-</span>';
+
+        tr.appendChild(tdRep);
+        tr.appendChild(tdNome);
+        tr.appendChild(tdInterno);
+        tr.appendChild(tdFisso);
+        tr.appendChild(tdCell);
+        tr.appendChild(tdEmail);
+
+        corpoTabella.appendChild(tr);
+      });
+    }
+
+    filtroReparto.addEventListener("change", aggiornaTabella);
+    filtroNome.addEventListener("input", aggiornaTabella);
+
+    popolaReparti();
+    aggiornaTabella();
+  </script>
+</body>
+</html>
